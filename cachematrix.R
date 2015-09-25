@@ -78,3 +78,35 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
 }
+
+# x <- matrix(c(1, 0, 1, 5, -3, 1, 2, 4, 7), nrow = 3)
+#
+# > x
+# [,1] [,2] [,3]
+# [1,]    1    5    2
+# [2,]    0   -3    4
+# [3,]    1    1    7
+#
+# z <- makeCacheMatrix(x)
+#
+# > z$get()
+# [,1] [,2] [,3]
+# [1,]    1    5    2
+# [2,]    0   -3    4
+# [3,]    1    1    7
+#
+# > z$seti
+# function(i) m <<- i
+# <environment: 0x106e8e1c8>
+#         > cacheSolve(z)
+# Fetching cached matrix to save you time and money, because we care.
+# [,1] [,2] [,3]
+# [1,]  -25  -33   26
+# [2,]    4    5   -4
+# [3,]    3    4   -3
+# 
+# > solve(x)
+# [,1] [,2] [,3]
+# [1,]  -25  -33   26
+# [2,]    4    5   -4
+# [3,]    3    4   -3
