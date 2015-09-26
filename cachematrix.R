@@ -31,7 +31,7 @@ makeCacheMatrix <- function(x = matrix()) {
         # 3. set the cached value of the inverse i globally to seti - Set I
         seti <- function(i) m <<- i
         
-        # 4. get the value of the inverse getu - Get I
+        # 4. get the value of the inverse geti - Get I
         # to the inverse of the matrix x
         geti <- function() m 
         
@@ -48,11 +48,12 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         
-        # Return the inverse matrix of x
-        # If matrix m is NOT null, print a friendly message
+        # Check to see if the matrix is chached, and if it is, return the 
+        # inverse matrix of x from our matrix object created in the make function
+        # Print a friendly message to indicate the out is from cache not computation
         m <- x$geti()
         if(!is.null(m)) {
-                message("Fetching cached matrix to save you time and money, because we care.")
+                message("Fetching cached inverse matrix to save you time and money, because we care.")
                 return(m)
         }
         
@@ -62,11 +63,14 @@ cacheSolve <- function(x, ...) {
         
         # set and pass matrix M out
         x$seti(m)
+
+        # send m out
         m
 }
 
 # End of function
 
+# Simple functional test set: matrix def, cmdln inout, function output
 # x <- matrix(c(1, 0, 1, 5, -3, 1, 2, 4, 7), nrow = 3)
 #
 # > x
@@ -86,7 +90,8 @@ cacheSolve <- function(x, ...) {
 # > z$seti
 # function(i) m <<- i
 # <environment: 0x106e8e1c8>
-#         > cacheSolve(z)
+#
+# > cacheSolve(z)
 # Fetching cached matrix to save you time and money, because we care.
 # [,1] [,2] [,3]
 # [1,]  -25  -33   26
